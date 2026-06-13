@@ -42,4 +42,5 @@ window.memorias = [
   { id: 41, foto: "img/memoria041.jpg", arquivoOriginal: "IMG_20250525_110400409_HDR.jpg" },
   { id: 42, foto: "img/memoria042.jpg", arquivoOriginal: "IMG_20250525_121317463_HDR.jpg" },
   { id: 43, foto: "img/memoria043.jpg", arquivoOriginal: "IMG_20250525_123018626_HDR_AE.jpg" },
+  { id: 44, foto: "img/memoria044.png", arquivoOriginal: "ChatGPT Image 16 de jul. de 2025, 02_48_00.png", adicionadoEm: "2026-06-13" }
 ];
