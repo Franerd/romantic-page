@@ -1,4 +1,4 @@
-const memorias = [
+window.memorias = [
   { id: 1, foto: "img/memoria001.jpg", arquivoOriginal: "IMG-20210627-WA0093-COLLAGE.jpg" },
   { id: 2, foto: "img/memoria002.jpg", arquivoOriginal: "IMG-20221127-WA0005.jpg" },
   { id: 3, foto: "img/memoria003.jpg", arquivoOriginal: "IMG-20230913-WA0004.jpg" },
@@ -42,4 +42,5 @@ const memorias = [
   { id: 41, foto: "img/memoria041.jpg", arquivoOriginal: "IMG_20250525_110400409_HDR.jpg" },
   { id: 42, foto: "img/memoria042.jpg", arquivoOriginal: "IMG_20250525_121317463_HDR.jpg" },
   { id: 43, foto: "img/memoria043.jpg", arquivoOriginal: "IMG_20250525_123018626_HDR_AE.jpg" },
+  { id: 44, foto: "img/memoria044.jpg", arquivoOriginal: "IMG_20250525_121317463_HDR.jpg", adicionadoEm: "2026-06-13" }
 ];
