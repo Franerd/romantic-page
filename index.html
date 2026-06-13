@@ -340,6 +340,106 @@
       70% { transform: scale(1.15); }
     }
 
+
+    .admin-toggle {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 50;
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 46px rgba(0,0,0,.34);
+    }
+
+    .admin-panel {
+      position: fixed;
+      right: 16px;
+      bottom: 76px;
+      z-index: 60;
+      width: min(420px, calc(100vw - 32px));
+      display: none;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: rgba(20,8,24,.88);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(24px);
+      text-align: left;
+    }
+
+    .admin-panel.open { display: block; }
+
+    .admin-panel h2 {
+      margin: 0 0 6px;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .admin-panel p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.45;
+    }
+
+    .admin-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .admin-panel label {
+      display: grid;
+      gap: 5px;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .admin-panel input {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 14px;
+      padding: 10px 12px;
+      color: var(--text);
+      background: rgba(255,255,255,.08);
+      outline: none;
+    }
+
+    .admin-panel input:focus {
+      border-color: rgba(255,176,202,.45);
+      box-shadow: 0 0 0 3px rgba(255,79,145,.13);
+    }
+
+    .admin-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .admin-status {
+      min-height: 20px;
+      margin-top: 12px;
+      color: var(--rose);
+      font-size: .88rem;
+      line-height: 1.45;
+      white-space: pre-wrap;
+    }
+
+    .admin-note {
+      margin-top: 10px;
+      color: rgba(255,247,251,.56);
+      font-size: .78rem;
+      line-height: 1.4;
+    }
+
     @media (max-width: 900px) {
       .page { padding: 14px 0 46px; place-items: start center; }
       .experience { grid-template-columns: 1fr; padding: 18px; border-radius: 34px; }
@@ -366,7 +466,7 @@
           <div class="stats">
             <div class="stat"><strong id="totalDias">0</strong><span>dias vividos</span></div>
             <div class="stat"><strong id="proximoAniversario">0</strong><span>dias para o próximo aniversário</span></div>
-            <div class="stat"><strong>43</strong><span>memórias no slideshow</span></div>
+            <div class="stat"><strong id="totalMemorias">0</strong><span>memórias no slideshow</span></div>
           </div>
         </div>
 
@@ -391,52 +491,45 @@
     <div class="signature">Feito com amor, música e memórias. <span class="heart">❤️</span></div>
   </main>
 
+  <button class="admin-toggle" id="adminToggle" type="button" title="Adicionar foto">＋</button>
+
+  <aside class="admin-panel" id="adminPanel" aria-hidden="true">
+    <h2>Adicionar nova foto</h2>
+    <p>Configuração salva apenas neste navegador. O token não fica no GitHub.</p>
+
+    <div class="admin-grid">
+      <label>Usuário/organização do GitHub
+        <input id="ghOwner" placeholder="ex: FraNerd" autocomplete="off" />
+      </label>
+      <label>Repositório
+        <input id="ghRepo" placeholder="ex: pagina-romantica" autocomplete="off" />
+      </label>
+      <label>Branch
+        <input id="ghBranch" placeholder="main" autocomplete="off" />
+      </label>
+      <label>Token GitHub
+        <input id="ghToken" type="password" placeholder="cole seu token aqui" autocomplete="off" />
+      </label>
+      <label>Escolher foto
+        <input id="novaFoto" type="file" accept="image/jpeg,image/png,image/webp" />
+      </label>
+    </div>
+
+    <div class="admin-actions">
+      <button id="salvarConfig" type="button">Salvar config</button>
+      <button id="enviarFoto" type="button">Enviar foto</button>
+    </div>
+    <div class="admin-status" id="adminStatus"></div>
+    <div class="admin-note">Permissão recomendada do token: acesso somente a este repositório, com Contents: Read and Write.</div>
+  </aside>
+
+
+  <script src="dados.js"></script>
   <script>
-    const imagens = [
-      "img/memoria001.jpg",
-      "img/memoria002.jpg",
-      "img/memoria003.jpg",
-      "img/memoria004.jpg",
-      "img/memoria005.jpg",
-      "img/memoria006.jpg",
-      "img/memoria007.jpg",
-      "img/memoria008.jpg",
-      "img/memoria009.jpg",
-      "img/memoria010.jpg",
-      "img/memoria011.jpg",
-      "img/memoria012.jpg",
-      "img/memoria013.jpg",
-      "img/memoria014.jpg",
-      "img/memoria015.jpg",
-      "img/memoria016.jpg",
-      "img/memoria017.jpg",
-      "img/memoria018.jpg",
-      "img/memoria019.jpg",
-      "img/memoria020.jpg",
-      "img/memoria021.jpg",
-      "img/memoria022.jpg",
-      "img/memoria023.jpg",
-      "img/memoria024.jpg",
-      "img/memoria025.jpg",
-      "img/memoria026.jpg",
-      "img/memoria027.jpg",
-      "img/memoria028.jpg",
-      "img/memoria029.jpg",
-      "img/memoria030.jpg",
-      "img/memoria031.jpg",
-      "img/memoria032.jpg",
-      "img/memoria033.jpg",
-      "img/memoria034.jpg",
-      "img/memoria035.jpg",
-      "img/memoria036.jpg",
-      "img/memoria037.jpg",
-      "img/memoria038.jpg",
-      "img/memoria039.jpg",
-      "img/memoria040.jpg",
-      "img/memoria041.jpg",
-      "img/memoria042.jpg",
-      "img/memoria043.jpg"
-];
+    let imagens = Array.isArray(window.memorias)
+      ? memorias.map(item => typeof item === "string" ? item : item.foto).filter(Boolean)
+      : [];
+
 
     const frases = [
       "Te encontrei onde menos esperava, e agora não me imagino mais sem você.",
@@ -461,13 +554,211 @@
     const contador = document.getElementById("contador");
     const totalDias = document.getElementById("totalDias");
     const proximoAniversario = document.getElementById("proximoAniversario");
+    const totalMemorias = document.getElementById("totalMemorias");
     const slideshow = document.getElementById("slideshow");
     const frasesContainer = document.getElementById("frasesContainer");
     const musica = document.getElementById("musica");
     const btnMusica = document.getElementById("btnMusica");
     const controleVolume = document.getElementById("controleVolume");
+    const adminToggle = document.getElementById("adminToggle");
+    const adminPanel = document.getElementById("adminPanel");
+    const ghOwner = document.getElementById("ghOwner");
+    const ghRepo = document.getElementById("ghRepo");
+    const ghBranch = document.getElementById("ghBranch");
+    const ghToken = document.getElementById("ghToken");
+    const novaFoto = document.getElementById("novaFoto");
+    const salvarConfig = document.getElementById("salvarConfig");
+    const enviarFoto = document.getElementById("enviarFoto");
+    const adminStatus = document.getElementById("adminStatus");
+    const CONFIG_KEY = "paginaRomanticaGithubConfig";
+
+    function statusAdmin(texto) {
+      adminStatus.textContent = texto || "";
+    }
+
+    function carregarConfig() {
+      try {
+        const cfg = JSON.parse(localStorage.getItem(CONFIG_KEY) || "{}");
+        ghOwner.value = cfg.owner || "";
+        ghRepo.value = cfg.repo || "";
+        ghBranch.value = cfg.branch || "main";
+        ghToken.value = cfg.token || "";
+      } catch {
+        ghBranch.value = "main";
+      }
+    }
+
+    function obterConfig() {
+      return {
+        owner: ghOwner.value.trim(),
+        repo: ghRepo.value.trim(),
+        branch: ghBranch.value.trim() || "main",
+        token: ghToken.value.trim()
+      };
+    }
+
+    function salvarGithubConfig() {
+      const cfg = obterConfig();
+      if (!cfg.owner || !cfg.repo || !cfg.branch || !cfg.token) {
+        statusAdmin("Preencha owner, repositório, branch e token.");
+        return null;
+      }
+      localStorage.setItem(CONFIG_KEY, JSON.stringify(cfg));
+      statusAdmin("Configuração salva neste navegador.");
+      return cfg;
+    }
+
+    function arrayBufferParaBase64(buffer) {
+      let binary = "";
+      const bytes = new Uint8Array(buffer);
+      const chunk = 0x8000;
+      for (let i = 0; i < bytes.length; i += chunk) {
+        binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
+      }
+      return btoa(binary);
+    }
+
+    function proximoArquivoMemoria(file) {
+      const maiorId = memorias.reduce((maior, item) => Math.max(maior, Number(item.id || 0)), 0);
+      const proximoId = maiorId + 1;
+      const tipo = (file.type || "").toLowerCase();
+      const extensao = tipo.includes("png") ? "png" : tipo.includes("webp") ? "webp" : "jpg";
+      return {
+        id: proximoId,
+        caminho: `img/memoria${String(proximoId).padStart(3, "0")}.${extensao}`
+      };
+    }
+
+    function atualizarTotalMemorias() {
+      totalMemorias.textContent = imagens.length.toLocaleString("pt-BR");
+    }
+
+    function atualizarListaLocalMemorias(lista) {
+      window.memorias = lista;
+      imagens = lista
+        .map(item => typeof item === "string" ? item : item.foto)
+        .filter(Boolean);
+      atualizarTotalMemorias();
+    }
+
+    function adicionarFotoAoSlideshow(src, alt) {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = alt || `Memória ${slideshow.querySelectorAll("img").length + 1}`;
+      img.loading = "lazy";
+      slideshow.appendChild(img);
+    }
+
+    function gerarDadosJs(lista) {
+      const linhas = lista.map(item => {
+        const partes = [
+          `id: ${Number(item.id)}`,
+          `foto: ${JSON.stringify(item.foto)}`
+        ];
+        if (item.arquivoOriginal) partes.push(`arquivoOriginal: ${JSON.stringify(item.arquivoOriginal)}`);
+        if (item.adicionadoEm) partes.push(`adicionadoEm: ${JSON.stringify(item.adicionadoEm)}`);
+        return `  { ${partes.join(", ")} }`;
+      });
+      return `window.memorias = [\n${linhas.join(",\n")}\n];\n`;
+    }
+
+    async function githubRequest(cfg, path, options = {}) {
+      const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${path}`;
+      const resposta = await fetch(url + (options.method === "GET" ? `?ref=${encodeURIComponent(cfg.branch)}` : ""), {
+        method: options.method || "GET",
+        headers: {
+          "Accept": "application/vnd.github+json",
+          "Authorization": `Bearer ${cfg.token}`,
+          "X-GitHub-Api-Version": "2022-11-28"
+        },
+        body: options.body ? JSON.stringify(options.body) : undefined
+      });
+
+      const texto = await resposta.text();
+      let dados = null;
+      try { dados = texto ? JSON.parse(texto) : null; } catch { dados = texto; }
+      if (!resposta.ok) {
+        const msg = dados && dados.message ? dados.message : texto;
+        throw new Error(msg || `Erro ${resposta.status}`);
+      }
+      return dados;
+    }
+
+    async function enviarArquivoGithub(cfg, path, conteudoBase64, mensagem, sha) {
+      return githubRequest(cfg, path, {
+        method: "PUT",
+        body: {
+          message: mensagem,
+          content: conteudoBase64,
+          branch: cfg.branch,
+          ...(sha ? { sha } : {})
+        }
+      });
+    }
+
+    async function enviarNovaFoto() {
+      const cfg = salvarGithubConfig();
+      if (!cfg) return;
+
+      const file = novaFoto.files && novaFoto.files[0];
+      if (!file) {
+        statusAdmin("Escolha uma imagem primeiro.");
+        return;
+      }
+
+      if (!file.type.startsWith("image/")) {
+        statusAdmin("O arquivo escolhido não parece ser uma imagem.");
+        return;
+      }
+
+      try {
+        enviarFoto.disabled = true;
+        statusAdmin("Preparando imagem...");
+
+        const novo = proximoArquivoMemoria(file);
+        const base64Imagem = arrayBufferParaBase64(await file.arrayBuffer());
+
+        statusAdmin(`Enviando ${novo.caminho}...`);
+        await enviarArquivoGithub(cfg, novo.caminho, base64Imagem, `Adicionar ${novo.caminho}`);
+
+        statusAdmin("Atualizando dados.js...");
+        let shaDados = null;
+        try {
+          const dadosAtual = await githubRequest(cfg, "dados.js", { method: "GET" });
+          shaDados = dadosAtual.sha;
+        } catch {
+          shaDados = null;
+        }
+
+        const novaLista = [
+          ...memorias,
+          {
+            id: novo.id,
+            foto: novo.caminho,
+            arquivoOriginal: file.name,
+            adicionadoEm: new Date().toISOString().slice(0, 10)
+          }
+        ];
+
+        const dadosJs = gerarDadosJs(novaLista);
+        const base64Dados = btoa(unescape(encodeURIComponent(dadosJs)));
+        await enviarArquivoGithub(cfg, "dados.js", base64Dados, `Atualizar lista de memórias`, shaDados);
+
+        atualizarListaLocalMemorias(novaLista);
+        adicionarFotoAoSlideshow(URL.createObjectURL(file), `Memória ${novo.id}`);
+        novaFoto.value = "";
+
+        statusAdmin(`Foto adicionada com sucesso: ${novo.caminho}\nA contagem foi atualizada. Em alguns segundos ela também aparecerá após atualizar a página.`);
+      } catch (erro) {
+        statusAdmin(`Erro: ${erro.message}`);
+      } finally {
+        enviarFoto.disabled = false;
+      }
+    }
 
     musica.volume = Number(controleVolume.value);
+    atualizarTotalMemorias();
+    carregarConfig();
 
     imagens.forEach((src, index) => {
       const img = document.createElement("img");
@@ -541,6 +832,14 @@
     controleVolume.addEventListener("input", () => {
       musica.volume = Number(controleVolume.value);
     });
+
+    adminToggle.addEventListener("click", () => {
+      adminPanel.classList.toggle("open");
+      adminPanel.setAttribute("aria-hidden", adminPanel.classList.contains("open") ? "false" : "true");
+    });
+
+    salvarConfig.addEventListener("click", salvarGithubConfig);
+    enviarFoto.addEventListener("click", enviarNovaFoto);
 
     mostrarFrase();
     window.setInterval(mostrarFrase, 5600);
