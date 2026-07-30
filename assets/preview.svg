@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="background" x1="70" y1="20" x2="1120" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08040a" />
+      <stop offset=".52" stop-color="#170818" />
+      <stop offset="1" stop-color="#2a0d22" />
+    </linearGradient>
+    <radialGradient id="pinkGlow" cx="0" cy="0" r="1" gradientTransform="translate(180 120) rotate(36) scale(520 410)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff4f91" stop-opacity=".48" />
+      <stop offset="1" stop-color="#ff4f91" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="violetGlow" cx="0" cy="0" r="1" gradientTransform="translate(1050 70) rotate(130) scale(430 360)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a855f7" stop-opacity=".38" />
+      <stop offset="1" stop-color="#a855f7" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="heart" x1="862" y1="148" x2="1064" y2="392" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffd9e9" />
+      <stop offset=".48" stop-color="#ff4f91" />
+      <stop offset="1" stop-color="#a855f7" />
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000" flood-opacity=".45" />
+    </filter>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0H0V44" fill="none" stroke="#fff" stroke-opacity=".035" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#background)" />
+  <rect width="1200" height="630" fill="url(#pinkGlow)" />
+  <rect width="1200" height="630" fill="url(#violetGlow)" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+
+  <rect
+    x="54"
+    y="54"
+    width="1092"
+    height="522"
+    rx="52"
+    fill="#fff"
+    fill-opacity=".07"
+    stroke="#fff"
+    stroke-opacity=".17"
+  />
+
+  <g transform="translate(90 90)">
+    <rect width="426" height="54" rx="27" fill="#fff" fill-opacity=".08" stroke="#fff" stroke-opacity=".15" />
+    <circle cx="31" cy="27" r="8" fill="#ff4f91" />
+    <text
+      x="53"
+      y="35"
+      fill="#ffd9e9"
+      font-family="DejaVu Sans, Arial, sans-serif"
+      font-size="18"
+      font-weight="700"
+      letter-spacing=".8"
+    >
+      NOSSA HISTÓRIA DESDE 2021
+    </text>
+  </g>
+
+  <text
+    x="90"
+    y="250"
+    fill="#fff7fb"
+    font-family="DejaVu Sans, Arial, sans-serif"
+    font-size="66"
+    font-weight="800"
+    letter-spacing="-3"
+  >
+    <tspan x="90" dy="0">Entre tantas voltas,</tspan>
+    <tspan x="90" dy="86" fill="#ffb0ca">escolhi ficar.</tspan>
+  </text>
+
+  <text
+    x="94"
+    y="432"
+    fill="#fff7fb"
+    fill-opacity=".76"
+    font-family="DejaVu Sans, Arial, sans-serif"
+    font-size="25"
+  >
+    Um cantinho só nosso, feito de tempo,
+  </text>
+  <text
+    x="94"
+    y="470"
+    fill="#fff7fb"
+    fill-opacity=".76"
+    font-family="DejaVu Sans, Arial, sans-serif"
+    font-size="25"
+  >
+    música e memórias.
+  </text>
+
+  <g filter="url(#shadow)">
+    <circle cx="964" cy="298" r="154" fill="#fff" fill-opacity=".07" stroke="#fff" stroke-opacity=".14" />
+    <path
+      d="m964 406-111.4-106.8c-61-59.1 25.5-142.7 84.7-84.1l26.7 26.7 26.7-26.7c59.2-58.6 145.7 25 84.7 84.1L964 406Z"
+      fill="url(#heart)"
+    />
+    <path
+      d="M907 207c-30-8-57.8 18-54.2 47.5"
+      fill="none"
+      stroke="#fff7fb"
+      stroke-linecap="round"
+      stroke-width="7"
+      opacity=".58"
+    />
+  </g>
+</svg>

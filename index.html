@@ -1,1211 +1,269 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#110711" />
-  <meta name="referrer" content="no-referrer" />
-  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
-  <meta
-    http-equiv="Content-Security-Policy"
-    content="default-src 'self'; img-src 'self' blob: data:; media-src 'self'; connect-src https://api.github.com; style-src 'self' 'sha256-eYduMJwqwbYtyxwuhnwgbMF5fSm0cRd+D+FnLi9wG6w='; script-src 'self' 'sha256-X9P6TONSM1xc6QMDEOhY7gbVCHlibE9qpFmZwOQNOH0='; object-src 'none'; base-uri 'none'; form-action 'none'"
-  />
-  <title>Entre tantas voltas, escolhi ficar.</title>
-  <style>
-    :root {
-      --bg-a: #08040a;
-      --bg-b: #170818;
-      --bg-c: #2a0d22;
-      --glass: rgba(255,255,255,.085);
-      --glass-strong: rgba(255,255,255,.14);
-      --line: rgba(255,255,255,.16);
-      --text: #fff7fb;
-      --muted: rgba(255,247,251,.72);
-      --pink: #ff4f91;
-      --rose: #ffb0ca;
-      --violet: #a855f7;
-      --shadow: 0 34px 100px rgba(0,0,0,.48);
-      --radius: 34px;
-    }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#110711">
+    <meta name="referrer" content="no-referrer">
+    <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' blob: data:; media-src 'self'; connect-src https://api.github.com; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
+   >
 
-    * { box-sizing: border-box; }
+    <title>Entre tantas voltas, escolhi ficar.</title>
+    <meta
+      name="description"
+      content="Um cantinho só nosso, feito de tempo, música e memórias."
+   >
 
-    html { scroll-behavior: smooth; }
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Nossa história">
+    <meta property="og:title" content="Entre tantas voltas, escolhi ficar.">
+    <meta
+      property="og:description"
+      content="Um cantinho só nosso, feito de tempo, música e memórias."
+   >
+    <meta
+      property="og:url"
+      content="https://franerd.github.io/romantic-page/"
+   >
+    <meta
+      property="og:image"
+      content="https://franerd.github.io/romantic-page/assets/preview.png"
+   >
+    <meta
+      property="og:image:secure_url"
+      content="https://franerd.github.io/romantic-page/assets/preview.png"
+   >
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta
+      property="og:image:alt"
+      content="Corações sobre um fundo romântico com a frase Entre tantas voltas, escolhi ficar."
+   >
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 15% 12%, rgba(255,79,145,.34), transparent 30rem),
-        radial-gradient(circle at 88% 8%, rgba(168,85,247,.26), transparent 28rem),
-        radial-gradient(circle at 58% 88%, rgba(255,176,202,.14), transparent 24rem),
-        linear-gradient(135deg, var(--bg-a), var(--bg-b) 46%, var(--bg-c));
-      overflow-x: hidden;
-    }
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Entre tantas voltas, escolhi ficar.">
+    <meta
+      name="twitter:description"
+      content="Um cantinho só nosso, feito de tempo, música e memórias."
+   >
+    <meta
+      name="twitter:image"
+      content="https://franerd.github.io/romantic-page/assets/preview.png"
+   >
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,.032) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.032) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, #000, transparent 78%);
-    }
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo-principal"
+      >Ir para o conteúdo principal</a
+    >
 
-    .page {
-      position: relative;
-      width: min(1160px, calc(100% - 30px));
-      min-height: 100svh;
-      margin: 0 auto;
-      display: grid;
-      place-items: center;
-      padding: 28px 0;
-    }
+    <main class="page" id="conteudo-principal" tabindex="-1">
+      <section class="experience" aria-labelledby="titulo-principal">
+        <div class="content">
+          <div class="badge">
+            <span class="heart" aria-hidden="true">❤️</span>
+            <span>Nossa história desde 07 de janeiro de 2021</span>
+          </div>
 
-    .experience {
-      width: 100%;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(310px, 390px);
-      gap: clamp(24px, 5vw, 72px);
-      align-items: center;
-      padding: clamp(18px, 3vw, 34px);
-      border: 1px solid var(--line);
-      border-radius: calc(var(--radius) + 16px);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.045)),
-        radial-gradient(circle at 0% 0%, rgba(255,79,145,.17), transparent 36rem),
-        radial-gradient(circle at 100% 100%, rgba(168,85,247,.15), transparent 30rem);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(24px);
-    }
+          <h1 id="titulo-principal">
+            <span class="gradient-text">Entre tantas voltas,</span><br>
+            escolhi ficar.
+          </h1>
+          <p class="subtitle">
+            Um cantinho só nosso: tempo, fotos, música e frases passando como
+            lembranças que ainda continuam acontecendo.
+          </p>
 
-    .content {
-      min-width: 0;
-    }
+          <section class="counter-card" aria-labelledby="titulo-contador">
+            <h2 class="counter-title" id="titulo-contador">
+              Estamos juntos há
+            </h2>
+            <p class="counter" id="contador">Carregando...</p>
+            <dl class="stats">
+              <div class="stat">
+                <dt>dias vividos</dt>
+                <dd id="totalDias">0</dd>
+              </div>
+              <div class="stat">
+                <dt>dias para o próximo aniversário</dt>
+                <dd id="proximoAniversario">0</dd>
+              </div>
+              <div class="stat">
+                <dt>memórias no slideshow</dt>
+                <dd id="totalMemorias">0</dd>
+              </div>
+            </dl>
+          </section>
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,.075);
-      color: var(--muted);
-      backdrop-filter: blur(18px);
-    }
+          <blockquote class="quote-card">
+            <p class="quote" id="frasesContainer">
+              Carregando uma lembrança...
+            </p>
+          </blockquote>
 
-    .heart {
-      display: inline-block;
-      animation: heartbeat 1.35s ease-in-out infinite;
-      filter: drop-shadow(0 0 18px rgba(255,79,145,.65));
-    }
-
-    h1 {
-      max-width: 760px;
-      margin: 24px 0 16px;
-      font-size: clamp(2.5rem, 7vw, 5.8rem);
-      line-height: .92;
-      letter-spacing: -0.075em;
-    }
-
-    .gradient-text {
-      background: linear-gradient(90deg, #fff, #ffd9e9 38%, var(--pink));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .subtitle {
-      max-width: 640px;
-      margin: 0 0 22px;
-      font-size: clamp(1.02rem, 2.2vw, 1.28rem);
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .counter-card, .quote-card {
-      width: min(100%, 680px);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      background: rgba(255,255,255,.075);
-      box-shadow: 0 18px 60px rgba(0,0,0,.25);
-      backdrop-filter: blur(18px);
-    }
-
-    .counter-card {
-      padding: 18px;
-      display: grid;
-      gap: 14px;
-    }
-
-    .counter-title {
-      color: var(--muted);
-      font-size: .84rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .counter {
-      font-size: clamp(1.2rem, 3.2vw, 2.05rem);
-      font-weight: 850;
-      letter-spacing: -0.035em;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .stat {
-      min-height: 86px;
-      padding: 14px;
-      border-radius: 20px;
-      background: rgba(0,0,0,.16);
-      border: 1px solid rgba(255,255,255,.11);
-    }
-
-    .stat strong { display: block; font-size: 1.55rem; }
-    .stat span { color: var(--muted); font-size: .88rem; }
-
-    .quote-card {
-      position: relative;
-      margin-top: 14px;
-      padding: 20px 22px;
-      overflow: hidden;
-    }
-
-    .quote-card::before {
-      content: "“";
-      position: absolute;
-      top: -22px;
-      left: 14px;
-      font-size: 6rem;
-      line-height: 1;
-      color: rgba(255,176,202,.18);
-      font-family: Georgia, serif;
-    }
-
-    .quote {
-      position: relative;
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      color: #ffe5ef;
-      font-size: clamp(1.06rem, 2.3vw, 1.38rem);
-      line-height: 1.55;
-      font-style: italic;
-      transition: opacity .42s ease, transform .42s ease, filter .42s ease;
-    }
-
-    .quote.fade {
-      opacity: 0;
-      transform: translateY(8px);
-      filter: blur(2px);
-    }
-
-    .player {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-      color: var(--muted);
-    }
-
-    button {
-      border: 0;
-      cursor: pointer;
-      color: white;
-      font-weight: 850;
-      border-radius: 999px;
-      padding: 13px 18px;
-      background: linear-gradient(135deg, var(--pink), var(--violet));
-      box-shadow: 0 16px 34px rgba(255,79,145,.25);
-      transition: transform .2s ease, filter .2s ease;
-    }
-
-    button:hover { transform: translateY(-2px); filter: brightness(1.07); }
-    input[type="range"] { accent-color: var(--pink); }
-
-    .phone-wrap {
-      justify-self: center;
-      position: relative;
-      width: min(390px, 86vw);
-      aspect-ratio: 9 / 16;
-      border-radius: 48px;
-      padding: 10px;
-      background: linear-gradient(145deg, rgba(255,255,255,.35), rgba(255,255,255,.08));
-      box-shadow: 0 42px 110px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.18) inset;
-      isolation: isolate;
-    }
-
-    .phone-wrap::before {
-      content: "";
-      position: absolute;
-      top: 23px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 98px;
-      height: 24px;
-      z-index: 4;
-      border-radius: 0 0 18px 18px;
-      background: #050309;
-      box-shadow: 0 8px 22px rgba(0,0,0,.34);
-    }
-
-    .phone-wrap::after {
-      content: "";
-      position: absolute;
-      inset: -18px;
-      z-index: -1;
-      border-radius: 58px;
-      background: linear-gradient(135deg, rgba(255,79,145,.42), rgba(168,85,247,.28));
-      filter: blur(30px);
-      opacity: .55;
-    }
-
-    .slideshow {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      border-radius: 38px;
-      background: #120712;
-      clip-path: inset(0 round 38px);
-      transform: translateZ(0);
-    }
-
-    .slideshow img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: inherit;
-      opacity: 0;
-      transform: scale(1.08);
-      transition: opacity 1s ease, transform 7s ease;
-      backface-visibility: hidden;
-    }
-
-    .slideshow img.active { opacity: 1; transform: scale(1); }
-
-    .photo-caption {
-      position: absolute;
-      left: 20px;
-      right: 20px;
-      bottom: 20px;
-      z-index: 3;
-      padding: 92px 18px 18px;
-      border-radius: 0 0 30px 30px;
-      background: linear-gradient(to top, rgba(0,0,0,.56), transparent);
-      pointer-events: none;
-    }
-
-    .photo-caption strong { display: block; font-size: 1.08rem; }
-    .photo-caption span { color: rgba(255,255,255,.73); font-size: .88rem; }
-
-    .dots {
-      position: absolute;
-      left: 50%;
-      bottom: -28px;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 6px;
-      opacity: .7;
-    }
-
-    .dots i {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.55);
-    }
-
-    .signature {
-      position: absolute;
-      bottom: 14px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      color: rgba(255,247,251,.56);
-      font-size: .88rem;
-    }
-
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      35% { transform: scale(1.24); }
-      55% { transform: scale(1); }
-      70% { transform: scale(1.15); }
-    }
-
-
-    .admin-toggle {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 50;
-      width: 46px;
-      height: 46px;
-      padding: 0;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(255,255,255,.12);
-      border: 1px solid var(--line);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 16px 46px rgba(0,0,0,.34);
-    }
-
-    .admin-panel {
-      position: fixed;
-      right: 16px;
-      bottom: 76px;
-      z-index: 60;
-      width: min(420px, calc(100vw - 32px));
-      display: none;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background: rgba(20,8,24,.88);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(24px);
-      text-align: left;
-    }
-
-    .admin-panel.open { display: block; }
-
-    .admin-panel h2 {
-      margin: 0 0 6px;
-      font-size: 1.25rem;
-      letter-spacing: -0.03em;
-    }
-
-    .admin-panel p {
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: .9rem;
-      line-height: 1.45;
-    }
-
-    .admin-grid {
-      display: grid;
-      gap: 10px;
-    }
-
-    .admin-panel label {
-      display: grid;
-      gap: 5px;
-      color: var(--muted);
-      font-size: .82rem;
-    }
-
-    .admin-panel input {
-      width: 100%;
-      min-height: 42px;
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 14px;
-      padding: 10px 12px;
-      color: var(--text);
-      background: rgba(255,255,255,.08);
-      outline: none;
-    }
-
-    .admin-panel input:focus {
-      border-color: rgba(255,176,202,.45);
-      box-shadow: 0 0 0 3px rgba(255,79,145,.13);
-    }
-
-    .admin-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-
-    .admin-status {
-      min-height: 20px;
-      margin-top: 12px;
-      color: var(--rose);
-      font-size: .88rem;
-      line-height: 1.45;
-      white-space: pre-wrap;
-    }
-
-    .admin-note {
-      margin-top: 10px;
-      color: rgba(255,247,251,.56);
-      font-size: .78rem;
-      line-height: 1.4;
-    }
-
-    @media (max-width: 900px) {
-      .page { padding: 14px 0 46px; place-items: start center; }
-      .experience { grid-template-columns: 1fr; padding: 18px; border-radius: 34px; }
-      .phone-wrap { order: -1; width: min(330px, 84vw); }
-      .content { text-align: center; }
-      .subtitle, .counter-card, .quote-card { margin-left: auto; margin-right: auto; }
-      .player { justify-content: center; }
-      .stats { grid-template-columns: 1fr; }
-      .signature { position: relative; margin-top: 18px; bottom: auto; }
-    }
-  </style>
-</head>
-<body>
-  <main class="page">
-    <section class="experience">
-      <div class="content">
-        <div class="badge"><span class="heart">❤️</span><span>Nossa história desde 07 de janeiro de 2021</span></div>
-        <h1><span class="gradient-text">Entre tantas voltas,</span><br> escolhi ficar.</h1>
-        <p class="subtitle">Um cantinho só nosso: tempo, fotos, música e frases passando como lembranças que ainda continuam acontecendo.</p>
-
-        <div class="counter-card">
-          <div class="counter-title">Estamos juntos há</div>
-          <div class="counter" id="contador">Carregando...</div>
-          <div class="stats">
-            <div class="stat"><strong id="totalDias">0</strong><span>dias vividos</span></div>
-            <div class="stat"><strong id="proximoAniversario">0</strong><span>dias para o próximo aniversário</span></div>
-            <div class="stat"><strong id="totalMemorias">0</strong><span>memórias no slideshow</span></div>
+          <div class="player" role="group" aria-label="Música e movimento">
+            <button id="btnMusica" type="button" aria-pressed="false">
+              ▶ Tocar nossa música
+            </button>
+            <label for="controleVolume">Volume</label>
+            <input
+              type="range"
+              id="controleVolume"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.12"
+           >
+            <output id="volumeValor" for="controleVolume">12%</output>
+            <button
+              class="button-secondary"
+              id="btnMovimento"
+              type="button"
+              aria-pressed="false"
+            >
+              ⏸ Pausar animações
+            </button>
+            <audio id="musica" loop preload="metadata">
+              <source src="dengo.mp3" type="audio/mpeg">
+            </audio>
           </div>
         </div>
 
-        <div class="quote-card">
-          <div class="quote" id="frasesContainer">Carregando uma lembrança...</div>
+        <section
+          class="phone-wrap"
+          aria-roledescription="carrossel"
+          aria-label="Nossas memórias"
+          aria-describedby="legendaFoto"
+        >
+          <div class="slideshow" id="slideshow"></div>
+          <div class="photo-caption">
+            <strong>Nossa memória</strong>
+            <span id="legendaFoto"></span>
+          </div>
+          <div class="dots" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </section>
+      </section>
+
+      <div class="signature">
+        Feito com amor, música e memórias.
+        <span class="heart" aria-hidden="true">❤️</span>
+      </div>
+    </main>
+
+    <button
+      class="admin-toggle"
+      id="adminToggle"
+      type="button"
+      aria-label="Abrir painel para adicionar foto"
+      aria-controls="adminPanel"
+      aria-expanded="false"
+    >
+      <span aria-hidden="true">＋</span>
+    </button>
+
+    <aside
+      class="admin-panel"
+      id="adminPanel"
+      role="dialog"
+      aria-labelledby="adminTitulo"
+      hidden
+    >
+      <div class="admin-heading">
+        <h2 id="adminTitulo">Adicionar nova foto</h2>
+        <button
+          class="admin-close"
+          id="fecharAdmin"
+          type="button"
+          aria-label="Fechar painel"
+        >
+          ×
+        </button>
+      </div>
+      <p>
+        Usuário, repositório e branch podem ser salvos neste navegador. O token
+        nunca será salvo.
+      </p>
+
+      <form id="adminForm" novalidate>
+        <div class="admin-grid">
+          <label for="ghOwner">Usuário/organização do GitHub</label>
+          <input
+            id="ghOwner"
+            type="text"
+            placeholder="ex: Franerd"
+            autocomplete="off"
+            required
+         >
+
+          <label for="ghRepo">Repositório</label>
+          <input
+            id="ghRepo"
+            type="text"
+            placeholder="ex: romantic-page"
+            autocomplete="off"
+            required
+         >
+
+          <label for="ghBranch">Branch</label>
+          <input
+            id="ghBranch"
+            type="text"
+            placeholder="main"
+            autocomplete="off"
+            required
+         >
+
+          <label for="ghToken">Token GitHub</label>
+          <input
+            id="ghToken"
+            type="password"
+            placeholder="cole seu token aqui"
+            autocomplete="new-password"
+            spellcheck="false"
+            aria-describedby="tokenNota"
+            required
+         >
+
+          <label for="novaFoto">Escolher foto</label>
+          <input
+            id="novaFoto"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            aria-describedby="tokenNota"
+            required
+         >
         </div>
 
-        <div class="player">
-          <button id="btnMusica" type="button">▶ Tocar nossa música</button>
-          <label for="controleVolume">Volume</label>
-          <input type="range" id="controleVolume" min="0" max="1" step="0.01" value="0.12" />
-          <audio id="musica" loop preload="metadata"><source src="dengo.mp3" type="audio/mpeg"></audio>
+        <div class="admin-actions">
+          <button id="salvarConfig" type="button">Salvar configuração</button>
+          <button id="enviarFoto" type="submit">Enviar foto</button>
         </div>
+      </form>
+
+      <div
+        class="admin-status"
+        id="adminStatus"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
+      <div class="admin-note" id="tokenNota">
+        Use um token exclusivo para este repositório, com Contents: Read and
+        Write. Ele será apagado do campo após cada tentativa de envio.
       </div>
-
-      <div class="phone-wrap" aria-label="Slideshow de fotos">
-        <div class="slideshow" id="slideshow"></div>
-        <div class="photo-caption"><strong>Nossa memória</strong><span></span></div>
-        <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-      </div>
-    </section>
-    <div class="signature">Feito com amor, música e memórias. <span class="heart">❤️</span></div>
-  </main>
-
-  <button class="admin-toggle" id="adminToggle" type="button" title="Adicionar foto">＋</button>
-
-  <aside class="admin-panel" id="adminPanel" aria-hidden="true">
-    <h2>Adicionar nova foto</h2>
-    <p>Usuário, repositório e branch podem ser salvos neste navegador. O token nunca será salvo.</p>
-
-    <div class="admin-grid">
-      <label>Usuário/organização do GitHub
-        <input id="ghOwner" type="text" placeholder="ex: Franerd" autocomplete="off" />
-      </label>
-      <label>Repositório
-        <input id="ghRepo" type="text" placeholder="ex: romantic-page" autocomplete="off" />
-      </label>
-      <label>Branch
-        <input id="ghBranch" type="text" placeholder="main" autocomplete="off" />
-      </label>
-      <label>Token GitHub
-        <input id="ghToken" type="password" placeholder="cole seu token aqui" autocomplete="new-password" spellcheck="false" />
-      </label>
-      <label>Escolher foto
-        <input id="novaFoto" type="file" accept="image/jpeg,image/png,image/webp" />
-      </label>
-    </div>
-
-    <div class="admin-actions">
-      <button id="salvarConfig" type="button">Salvar config</button>
-      <button id="enviarFoto" type="button">Enviar foto</button>
-    </div>
-    <div class="admin-status" id="adminStatus"></div>
-    <div class="admin-note">Use um token exclusivo para este repositório, com Contents: Read and Write. Ele será apagado do campo após cada tentativa de envio.</div>
-  </aside>
-
-
-  <script src="dados.js"></script>
-  <script>
-    let imagens = Array.isArray(window.memorias)
-      ? memorias.map(item => typeof item === "string" ? item : item.foto).filter(Boolean)
-      : [];
-
-
-    const frases = [
-      "Te encontrei onde menos esperava, e agora não me imagino mais sem você.",
-      "Entre tantas voltas da vida, foi ao teu lado que escolhi ficar.",
-      "Você é meu ponto de paz no caos do mundo.",
-      "Com você, até o silêncio tem sentido.",
-      "Não foi sorte, foi escolha.",
-      "Você é minha certeza em meio às dúvidas.",
-      "Nos teus olhos encontrei meu lar.",
-      "Nada faz mais sentido sem o seu sorriso.",
-      "Até os dias nublados são bonitos com você.",
-      "Se eu tivesse que te escolher mil vezes, faria tudo igual.",
-      "Seu abraço é o lugar onde minha alma encontra paz.",
-      "Você não é só amor, é lar.",
-      "Nosso amor é poesia escrita no tempo.",
-      "Com você, o ordinário se torna extraordinário.",
-      "A vida sorriu pra mim no dia em que você chegou.",
-      "O amor que sinto por você é a melhor parte de mim."
-];
-
-    const inicioRelacionamento = new Date("2021-01-07T00:00:00");
-    const contador = document.getElementById("contador");
-    const totalDias = document.getElementById("totalDias");
-    const proximoAniversario = document.getElementById("proximoAniversario");
-    const totalMemorias = document.getElementById("totalMemorias");
-    const slideshow = document.getElementById("slideshow");
-    const legendaFoto = document.querySelector(".photo-caption span");
-    const frasesContainer = document.getElementById("frasesContainer");
-    const musica = document.getElementById("musica");
-    const btnMusica = document.getElementById("btnMusica");
-    const controleVolume = document.getElementById("controleVolume");
-    const adminToggle = document.getElementById("adminToggle");
-    const adminPanel = document.getElementById("adminPanel");
-    const ghOwner = document.getElementById("ghOwner");
-    const ghRepo = document.getElementById("ghRepo");
-    const ghBranch = document.getElementById("ghBranch");
-    const ghToken = document.getElementById("ghToken");
-    const novaFoto = document.getElementById("novaFoto");
-    const salvarConfig = document.getElementById("salvarConfig");
-    const enviarFoto = document.getElementById("enviarFoto");
-    const adminStatus = document.getElementById("adminStatus");
-    const CONFIG_KEY = "paginaRomanticaGithubConfig";
-    const TIPOS_IMAGEM_PERMITIDOS = new Set(["image/jpeg", "image/png", "image/webp"]);
-    const TAMANHO_MAXIMO_ARQUIVO = 20 * 1024 * 1024;
-    const TOTAL_MAXIMO_PIXELS = 50_000_000;
-    const LADO_MAXIMO_IMAGEM = 1600;
-    const QUALIDADE_IMAGEM = 0.84;
-    const camadasSlideshow = [];
-    let camadaAtiva = 0;
-    let fotoAtual = 0;
-    let trocaEmAndamento = false;
-    let urlTemporariaMemoria = null;
-
-    function statusAdmin(texto) {
-      adminStatus.textContent = texto || "";
-    }
-
-    function carregarConfig() {
-      try {
-        const cfg = JSON.parse(localStorage.getItem(CONFIG_KEY) || "{}");
-        ghOwner.value = cfg.owner || "";
-        ghRepo.value = cfg.repo || "";
-        ghBranch.value = cfg.branch || "main";
-        ghToken.value = "";
-
-        // Migração de segurança: versões anteriores salvavam o token.
-        if (Object.prototype.hasOwnProperty.call(cfg, "token")) {
-          localStorage.setItem(CONFIG_KEY, JSON.stringify({
-            owner: cfg.owner || "",
-            repo: cfg.repo || "",
-            branch: cfg.branch || "main"
-          }));
-        }
-      } catch {
-        ghBranch.value = "main";
-        ghToken.value = "";
-      }
-    }
-
-    function obterConfig() {
-      return {
-        owner: ghOwner.value.trim(),
-        repo: ghRepo.value.trim(),
-        branch: ghBranch.value.trim() || "main",
-        token: ghToken.value.trim()
-      };
-    }
-
-    function branchGithubValida(branch) {
-      return /^[A-Za-z0-9._/-]+$/.test(branch)
-        && !branch.startsWith("/")
-        && !branch.endsWith("/")
-        && !branch.includes("..")
-        && !branch.includes("//")
-        && !branch.endsWith(".lock");
-    }
-
-    function validarGithubConfig(cfg) {
-      const ownerValido = /^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$/.test(cfg.owner);
-      const repoValido = /^[A-Za-z0-9._-]{1,100}$/.test(cfg.repo)
-        && cfg.repo !== "."
-        && cfg.repo !== "..";
-
-      if (!ownerValido || !repoValido || !branchGithubValida(cfg.branch)) {
-        statusAdmin("Confira usuário/organização, repositório e branch.");
-        return false;
-      }
-      return true;
-    }
-
-    function salvarGithubConfig(mostrarMensagem = true) {
-      const cfg = obterConfig();
-      if (!validarGithubConfig(cfg)) {
-        return null;
-      }
-
-      localStorage.setItem(CONFIG_KEY, JSON.stringify({
-        owner: cfg.owner,
-        repo: cfg.repo,
-        branch: cfg.branch
-      }));
-
-      if (mostrarMensagem) {
-        statusAdmin("Usuário, repositório e branch foram salvos. O token não foi salvo.");
-      }
-      return cfg;
-    }
-
-    function arrayBufferParaBase64(buffer) {
-      let binary = "";
-      const bytes = new Uint8Array(buffer);
-      const chunk = 0x8000;
-      for (let i = 0; i < bytes.length; i += chunk) {
-        binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
-      }
-      return btoa(binary);
-    }
-
-    async function carregarImagemParaCanvas(file) {
-      if ("createImageBitmap" in window) {
-        return createImageBitmap(file, { imageOrientation: "from-image" });
-      }
-
-      return new Promise((resolve, reject) => {
-        const url = URL.createObjectURL(file);
-        const img = new Image();
-        img.onload = () => {
-          URL.revokeObjectURL(url);
-          resolve(img);
-        };
-        img.onerror = () => {
-          URL.revokeObjectURL(url);
-          reject(new Error("Não foi possível abrir a imagem escolhida."));
-        };
-        img.src = url;
-      });
-    }
-
-    function canvasParaBlob(canvas, tipo, qualidade) {
-      return new Promise(resolve => canvas.toBlob(resolve, tipo, qualidade));
-    }
-
-    async function prepararImagemSegura(file) {
-      if (!TIPOS_IMAGEM_PERMITIDOS.has((file.type || "").toLowerCase())) {
-        throw new Error("Use uma imagem JPG, PNG ou WebP.");
-      }
-
-      if (file.size > TAMANHO_MAXIMO_ARQUIVO) {
-        throw new Error("A imagem deve ter no máximo 20 MB.");
-      }
-
-      const imagem = await carregarImagemParaCanvas(file);
-      const larguraOriginal = imagem.width || imagem.naturalWidth;
-      const alturaOriginal = imagem.height || imagem.naturalHeight;
-
-      if (!larguraOriginal || !alturaOriginal || larguraOriginal * alturaOriginal > TOTAL_MAXIMO_PIXELS) {
-        if (typeof imagem.close === "function") imagem.close();
-        throw new Error("A resolução da imagem é grande demais.");
-      }
-
-      const escala = Math.min(1, LADO_MAXIMO_IMAGEM / larguraOriginal, LADO_MAXIMO_IMAGEM / alturaOriginal);
-      const largura = Math.max(1, Math.round(larguraOriginal * escala));
-      const altura = Math.max(1, Math.round(alturaOriginal * escala));
-      const canvas = document.createElement("canvas");
-      canvas.width = largura;
-      canvas.height = altura;
-
-      const contexto = canvas.getContext("2d", { alpha: true });
-      if (!contexto) {
-        if (typeof imagem.close === "function") imagem.close();
-        throw new Error("O navegador não conseguiu preparar a imagem.");
-      }
-
-      contexto.drawImage(imagem, 0, 0, largura, altura);
-      if (typeof imagem.close === "function") imagem.close();
-
-      let blob = await canvasParaBlob(canvas, "image/webp", QUALIDADE_IMAGEM);
-      let extensao = "webp";
-
-      if (!blob || blob.type !== "image/webp") {
-        const tipoAlternativo = file.type === "image/png" ? "image/png" : "image/jpeg";
-        blob = await canvasParaBlob(canvas, tipoAlternativo, QUALIDADE_IMAGEM);
-        extensao = tipoAlternativo === "image/png" ? "png" : "jpg";
-      }
-
-      if (!blob) {
-        throw new Error("Não foi possível converter a imagem.");
-      }
-
-      return { blob, extensao };
-    }
-
-    function normalizarListaMemorias(lista) {
-      if (!Array.isArray(lista)) return [];
-
-      return lista.map((item, index) => {
-        const memoria = typeof item === "string"
-          ? { id: index + 1, foto: item }
-          : item;
-
-        const id = Number(memoria && memoria.id);
-        const foto = String(memoria && memoria.foto || "");
-        if (!Number.isInteger(id) || id < 1 || !/^img\/memoria\d{3,}\.(?:webp|jpe?g|png)$/i.test(foto)) {
-          return null;
-        }
-
-        const normalizada = { id, foto };
-        if (memoria.adicionadoEm) normalizada.adicionadoEm = String(memoria.adicionadoEm);
-        return normalizada;
-      }).filter(Boolean);
-    }
-
-    function proximoArquivoMemoria(extensao, lista = window.memorias) {
-      const maiorId = normalizarListaMemorias(lista)
-        .reduce((maior, item) => Math.max(maior, item.id), 0);
-      const proximoId = maiorId + 1;
-      return {
-        id: proximoId,
-        caminho: `img/memoria${String(proximoId).padStart(3, "0")}.${extensao}`
-      };
-    }
-
-    function atualizarTotalMemorias() {
-      totalMemorias.textContent = imagens.length.toLocaleString("pt-BR");
-    }
-
-    function atualizarListaLocalMemorias(lista) {
-      const listaNormalizada = normalizarListaMemorias(lista);
-      window.memorias = listaNormalizada;
-      imagens = listaNormalizada.map(item => item.foto);
-      atualizarTotalMemorias();
-    }
-
-    function adicionarFotoAoSlideshow(src) {
-      if (urlTemporariaMemoria) URL.revokeObjectURL(urlTemporariaMemoria);
-      urlTemporariaMemoria = src;
-      if (imagens.length) imagens[imagens.length - 1] = src;
-    }
-
-    function gerarDadosJs(lista) {
-      return `window.memorias = ${JSON.stringify(normalizarListaMemorias(lista), null, 2)};\n`;
-    }
-
-    function interpretarDadosJs(texto) {
-      const inicio = texto.indexOf("[");
-      const fim = texto.lastIndexOf("]");
-      if (inicio < 0 || fim <= inicio) {
-        throw new Error("O dados.js não contém uma lista válida.");
-      }
-
-      const lista = JSON.parse(texto.slice(inicio, fim + 1));
-      const listaNormalizada = normalizarListaMemorias(lista);
-      if (listaNormalizada.length !== lista.length) {
-        throw new Error("O dados.js contém uma memória inválida.");
-      }
-
-      const ids = new Set(listaNormalizada.map(item => item.id));
-      const fotos = new Set(listaNormalizada.map(item => item.foto));
-      if (ids.size !== listaNormalizada.length || fotos.size !== listaNormalizada.length) {
-        throw new Error("O dados.js contém memórias duplicadas.");
-      }
-      return listaNormalizada;
-    }
-
-    function base64ParaTexto(conteudo) {
-      const binario = atob(String(conteudo || "").replace(/\s/g, ""));
-      const bytes = Uint8Array.from(binario, caractere => caractere.charCodeAt(0));
-      return new TextDecoder().decode(bytes);
-    }
-
-    function textoParaBase64(texto) {
-      return arrayBufferParaBase64(new TextEncoder().encode(texto));
-    }
-
-    async function githubRequest(cfg, path, options = {}) {
-      const caminhoSeguro = path.split("/").map(encodeURIComponent).join("/");
-      const url = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${caminhoSeguro}`;
-      const resposta = await fetch(url + (options.method === "GET" ? `?ref=${encodeURIComponent(cfg.branch)}` : ""), {
-        method: options.method || "GET",
-        cache: "no-store",
-        headers: {
-          "Accept": "application/vnd.github+json",
-          "Authorization": `Bearer ${cfg.token}`,
-          "X-GitHub-Api-Version": "2022-11-28"
-        },
-        body: options.body ? JSON.stringify(options.body) : undefined
-      });
-
-      const texto = await resposta.text();
-      let dados = null;
-      try { dados = texto ? JSON.parse(texto) : null; } catch { dados = texto; }
-      if (!resposta.ok) {
-        const msg = dados && dados.message ? dados.message : texto;
-        throw new Error(msg || `Erro ${resposta.status}`);
-      }
-      return dados;
-    }
-
-    async function enviarArquivoGithub(cfg, path, conteudoBase64, mensagem, sha) {
-      return githubRequest(cfg, path, {
-        method: "PUT",
-        body: {
-          message: mensagem,
-          content: conteudoBase64,
-          branch: cfg.branch,
-          ...(sha ? { sha } : {})
-        }
-      });
-    }
-
-    async function removerArquivoGithub(cfg, path, sha) {
-      return githubRequest(cfg, path, {
-        method: "DELETE",
-        body: {
-          message: `Remover envio incompleto ${path}`,
-          sha,
-          branch: cfg.branch
-        }
-      });
-    }
-
-    async function enviarNovaFoto() {
-      let cfg = null;
-      let uploadParcial = null;
-      let dadosAtualizados = false;
-
-      try {
-        cfg = salvarGithubConfig(false);
-        if (!cfg) return;
-
-        if (!cfg.token) {
-          statusAdmin("Cole o token do GitHub para realizar este envio. Ele não será salvo.");
-          return;
-        }
-
-        const file = novaFoto.files && novaFoto.files[0];
-        if (!file) {
-          statusAdmin("Escolha uma imagem primeiro.");
-          return;
-        }
-
-        enviarFoto.disabled = true;
-        statusAdmin("Removendo metadados e preparando imagem...");
-
-        const imagemSegura = await prepararImagemSegura(file);
-        statusAdmin("Conferindo a lista atual no GitHub...");
-        const dadosAtual = await githubRequest(cfg, "dados.js", { method: "GET" });
-        if (!dadosAtual || !dadosAtual.sha || !dadosAtual.content) {
-          throw new Error("Não foi possível ler a versão atual de dados.js.");
-        }
-
-        const listaRemota = interpretarDadosJs(base64ParaTexto(dadosAtual.content));
-        const novo = proximoArquivoMemoria(imagemSegura.extensao, listaRemota);
-        const base64Imagem = arrayBufferParaBase64(await imagemSegura.blob.arrayBuffer());
-
-        statusAdmin(`Enviando ${novo.caminho}...`);
-        const respostaUpload = await enviarArquivoGithub(
-          cfg,
-          novo.caminho,
-          base64Imagem,
-          `Adicionar ${novo.caminho}`
-        );
-        const shaUpload = respostaUpload && respostaUpload.content && respostaUpload.content.sha;
-        if (!shaUpload) {
-          throw new Error("O GitHub não confirmou o arquivo enviado.");
-        }
-        uploadParcial = { caminho: novo.caminho, sha: shaUpload };
-
-        statusAdmin("Atualizando dados.js...");
-        const novaLista = [
-          ...listaRemota,
-          {
-            id: novo.id,
-            foto: novo.caminho,
-            adicionadoEm: new Date().toISOString().slice(0, 10)
-          }
-        ];
-
-        const dadosJs = gerarDadosJs(novaLista);
-        await enviarArquivoGithub(
-          cfg,
-          "dados.js",
-          textoParaBase64(dadosJs),
-          "Atualizar lista de memórias",
-          dadosAtual.sha
-        );
-        dadosAtualizados = true;
-
-        atualizarListaLocalMemorias(novaLista);
-        adicionarFotoAoSlideshow(URL.createObjectURL(imagemSegura.blob));
-        novaFoto.value = "";
-
-        statusAdmin(`Foto adicionada com sucesso: ${novo.caminho}\nA contagem foi atualizada. Em alguns segundos ela também aparecerá após atualizar a página.`);
-      } catch (erro) {
-        let detalheReversao = "";
-        if (cfg && uploadParcial && !dadosAtualizados) {
-          statusAdmin("A lista não foi atualizada. Removendo a imagem parcial...");
-          try {
-            await removerArquivoGithub(cfg, uploadParcial.caminho, uploadParcial.sha);
-            detalheReversao = "\nO envio parcial foi removido com segurança.";
-          } catch {
-            detalheReversao = `\nAtenção: não foi possível remover automaticamente ${uploadParcial.caminho}.`;
-          }
-        }
-        statusAdmin(`Erro: ${erro.message}${detalheReversao}`);
-      } finally {
-        ghToken.value = "";
-        enviarFoto.disabled = false;
-      }
-    }
-
-    function atualizarLegendaFoto(indice) {
-      legendaFoto.textContent = imagens.length
-        ? `Memória ${indice + 1} de ${imagens.length}`
-        : "";
-    }
-
-    function criarCamadaSlideshow() {
-      const img = document.createElement("img");
-      img.loading = "eager";
-      img.decoding = "async";
-      slideshow.appendChild(img);
-      return img;
-    }
-
-    function carregarCamadaSlideshow(camada, indice, prioridade = "low") {
-      const src = imagens[indice];
-      if (!src) return Promise.resolve(false);
-
-      camada.alt = `Memória ${indice + 1}`;
-      camada.fetchPriority = prioridade;
-      if (camada.getAttribute("src") === src && camada.complete && camada.naturalWidth) {
-        return Promise.resolve(true);
-      }
-
-      return new Promise(resolve => {
-        camada.onload = () => {
-          camada.onload = null;
-          camada.onerror = null;
-          resolve(true);
-        };
-        camada.onerror = () => {
-          camada.onload = null;
-          camada.onerror = null;
-          resolve(false);
-        };
-        camada.src = src;
-      });
-    }
-
-    async function iniciarSlideshow() {
-      slideshow.replaceChildren();
-      camadasSlideshow.length = 0;
-      camadaAtiva = 0;
-      fotoAtual = 0;
-      trocaEmAndamento = true;
-
-      if (!imagens.length) {
-        atualizarLegendaFoto(0);
-        trocaEmAndamento = false;
-        return;
-      }
-
-      camadasSlideshow.push(criarCamadaSlideshow(), criarCamadaSlideshow());
-      const carregouPrimeira = await carregarCamadaSlideshow(camadasSlideshow[0], 0, "high");
-      if (carregouPrimeira) camadasSlideshow[0].classList.add("active");
-      atualizarLegendaFoto(0);
-
-      if (imagens.length > 1) {
-        await carregarCamadaSlideshow(camadasSlideshow[1], 1);
-      }
-      trocaEmAndamento = false;
-    }
-
-    async function avancarSlideshow() {
-      if (imagens.length < 2 || trocaEmAndamento || camadasSlideshow.length < 2) return;
-      trocaEmAndamento = true;
-
-      const proximaFoto = (fotoAtual + 1) % imagens.length;
-      const proximaCamada = camadaAtiva === 0 ? 1 : 0;
-      const camadaNova = camadasSlideshow[proximaCamada];
-      const camadaAnterior = camadasSlideshow[camadaAtiva];
-      camadaNova.classList.remove("active");
-
-      const carregou = await carregarCamadaSlideshow(camadaNova, proximaFoto, "high");
-      if (!carregou) {
-        trocaEmAndamento = false;
-        return;
-      }
-
-      window.requestAnimationFrame(() => camadaNova.classList.add("active"));
-      window.setTimeout(async () => {
-        camadaAnterior.classList.remove("active");
-        camadaAtiva = proximaCamada;
-        fotoAtual = proximaFoto;
-        atualizarLegendaFoto(fotoAtual);
-
-        const seguinte = (fotoAtual + 1) % imagens.length;
-        await carregarCamadaSlideshow(camadaAnterior, seguinte);
-        trocaEmAndamento = false;
-      }, 1050);
-    }
-
-    musica.volume = Number(controleVolume.value);
-    atualizarListaLocalMemorias(window.memorias);
-    carregarConfig();
-    iniciarSlideshow();
-    window.setInterval(avancarSlideshow, 4200);
-
-    let fraseAtual = -1;
-
-    function escolherProximaFrase() {
-      if (frases.length <= 1) return 0;
-      let proxima = fraseAtual;
-      while (proxima === fraseAtual) {
-        proxima = Math.floor(Math.random() * frases.length);
-      }
-      return proxima;
-    }
-
-    function mostrarFrase() {
-      if (!frasesContainer || !frases.length) return;
-      frasesContainer.classList.add("fade");
-      window.setTimeout(() => {
-        fraseAtual = escolherProximaFrase();
-        frasesContainer.textContent = `“${frases[fraseAtual]}”`;
-        frasesContainer.classList.remove("fade");
-      }, 320);
-    }
-
-    function adicionarAnosPreservandoDia(data, quantidade) {
-      const resultado = new Date(data);
-      const dia = resultado.getDate();
-      resultado.setDate(1);
-      resultado.setFullYear(resultado.getFullYear() + quantidade);
-      resultado.setDate(Math.min(dia, new Date(
-        resultado.getFullYear(),
-        resultado.getMonth() + 1,
-        0
-      ).getDate()));
-      return resultado;
-    }
-
-    function adicionarMesesPreservandoDia(data, quantidade) {
-      const resultado = new Date(data);
-      const dia = resultado.getDate();
-      resultado.setDate(1);
-      resultado.setMonth(resultado.getMonth() + quantidade);
-      resultado.setDate(Math.min(dia, new Date(
-        resultado.getFullYear(),
-        resultado.getMonth() + 1,
-        0
-      ).getDate()));
-      return resultado;
-    }
-
-    function diferencaCalendario(inicio, fim) {
-      if (fim < inicio) {
-        return { anos: 0, meses: 0, dias: 0, horas: 0, minutos: 0, segundos: 0 };
-      }
-
-      let anos = fim.getFullYear() - inicio.getFullYear();
-      let cursor = adicionarAnosPreservandoDia(inicio, anos);
-      if (cursor > fim) {
-        anos -= 1;
-        cursor = adicionarAnosPreservandoDia(inicio, anos);
-      }
-
-      let meses = (fim.getFullYear() - cursor.getFullYear()) * 12
-        + fim.getMonth() - cursor.getMonth();
-      let candidato = adicionarMesesPreservandoDia(cursor, meses);
-      if (candidato > fim) {
-        meses -= 1;
-        candidato = adicionarMesesPreservandoDia(cursor, meses);
-      }
-      cursor = candidato;
-
-      let dias = 0;
-      while (true) {
-        const proximoDia = new Date(cursor);
-        proximoDia.setDate(proximoDia.getDate() + 1);
-        if (proximoDia > fim) break;
-        cursor = proximoDia;
-        dias += 1;
-      }
-
-      const restante = Math.max(0, fim - cursor);
-      const horas = Math.floor(restante / 3_600_000);
-      const minutos = Math.floor(restante / 60_000) % 60;
-      const segundos = Math.floor(restante / 1000) % 60;
-      return { anos, meses, dias, horas, minutos, segundos };
-    }
-
-    function numeroDiasEntreDatas(inicio, fim) {
-      const inicioUtc = Date.UTC(inicio.getFullYear(), inicio.getMonth(), inicio.getDate());
-      const fimUtc = Date.UTC(fim.getFullYear(), fim.getMonth(), fim.getDate());
-      return Math.max(0, Math.floor((fimUtc - inicioUtc) / 86_400_000));
-    }
-
-    function atualizarContador() {
-      const agora = new Date();
-      const tempo = diferencaCalendario(inicioRelacionamento, agora);
-      const diasTotais = numeroDiasEntreDatas(inicioRelacionamento, agora);
-
-      contador.textContent = `${tempo.anos} anos, ${tempo.meses} meses, ${tempo.dias} dias, ${tempo.horas}h ${tempo.minutos}min ${tempo.segundos}s`;
-      totalDias.textContent = diasTotais.toLocaleString("pt-BR");
-
-      const hojeUtc = Date.UTC(agora.getFullYear(), agora.getMonth(), agora.getDate());
-      let aniversarioUtc = Date.UTC(agora.getFullYear(), 0, 7);
-      if (hojeUtc > aniversarioUtc) aniversarioUtc = Date.UTC(agora.getFullYear() + 1, 0, 7);
-      proximoAniversario.textContent = Math.round((aniversarioUtc - hojeUtc) / 86_400_000);
-    }
-
-    btnMusica.addEventListener("click", async () => {
-      musica.volume = Number(controleVolume.value);
-      if (musica.paused) {
-        await musica.play();
-        btnMusica.textContent = "⏸ Pausar música";
-      } else {
-        musica.pause();
-        btnMusica.textContent = "▶ Tocar nossa música";
-      }
-    });
-
-    controleVolume.addEventListener("input", () => {
-      musica.volume = Number(controleVolume.value);
-    });
-
-    adminToggle.addEventListener("click", () => {
-      adminPanel.classList.toggle("open");
-      adminPanel.setAttribute("aria-hidden", adminPanel.classList.contains("open") ? "false" : "true");
-    });
-
-    salvarConfig.addEventListener("click", () => {
-      salvarGithubConfig(true);
-      ghToken.value = "";
-    });
-    enviarFoto.addEventListener("click", enviarNovaFoto);
-    window.addEventListener("pagehide", () => {
-      ghToken.value = "";
-      if (urlTemporariaMemoria) {
-        URL.revokeObjectURL(urlTemporariaMemoria);
-        urlTemporariaMemoria = null;
-      }
-    });
-
-    mostrarFrase();
-    window.setInterval(mostrarFrase, 5600);
-    atualizarContador();
-    window.setInterval(atualizarContador, 1000);
-  </script>
-</body>
+    </aside>
+
+    <script src="dados.js" defer></script>
+    <script src="app.js" defer></script>
+  </body>
 </html>
